@@ -1,1 +1,1 @@
-# WpViz
+# VizWiki
