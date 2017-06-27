@@ -1,0 +1,32 @@
+- model: visualization.material
+  pk: 1
+  fields: {sparql: "PREFIX dbp:<http://ja.dbpedia.org/resource/> \r\nPREFIX dbp-owl:\
+      \ <http://dbpedia.org/ontology/>\r\nPREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\r\
+      \nSELECT * \r\nWHERE{\r\n?creator rdf:type dbp-owl:ComicsCreator;\r\ndbp-owl:award\
+      \ dbp:\u624B\u585A\u6CBB\u866B\u6587\u5316\u8CDE;\r\ndbp-owl:birthPlace dbp:\u9577\
+      \u91CE\u770C.\r\n}", title: "\u30C6\u30B9\u30C8", template: test_template, meta: "{\r\
+      \n  \"foo\": \"bar\"\r\n}"}
+- model: visualization.material
+  pk: 2
+  fields: {sparql: "PREFIX dbpedia-owl:  <http://dbpedia.org/ontology/>\r\nPREFIX\
+      \ rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\nPREFIX category-ja:\
+      \ <http://ja.dbpedia.org/resource/Category:>\r\n\r\nselect distinct STRAFTER(str(?pref),\
+      \ \"http://ja.dbpedia.org/resource/\") AS ?pref (count(?s) AS ?count) STRAFTER(str(SAMPLE(?s)),\
+      \ \"http://ja.dbpedia.org/resource/\") AS ?sample where {\r\n  ?pref rdf:type\
+      \ dbpedia-owl:Place.\r\n  ?pref dbpedia-owl:wikiPageWikiLink category-ja:\u65E5\
+      \u672C\u306E\u90FD\u9053\u5E9C\u770C.\r\n  ?s rdf:type dbpedia-owl:Politician;\r\
+      \n      dbpedia-owl:birthPlace ?pref.\r\n}GROUP BY ?pref\r\nORDER BY DESC(?count)",
+    title: "\u653F\u6CBB\u5BB6\u51FA\u751F\u5730\u306E\u90FD\u9053\u5E9C\u770C\u30E9\
+      \u30F3\u30AD\u30F3\u30B0", template: bar_chart_horizontal, meta: "{\r\n  \"\
+      columns\": [\"pref\", \"count\", \"sample\"],\r\n  \"split_columns\": [\"sample\"\
+      ],\r\n  \"unit1\": \"\u90FD\u9053\u5E9C\u770C\",\r\n  \"unit2\": \"\u4EBA\"\
+      ,\r\n  \"sample_caption\": \"\u4EE3\u8868\u7684\u306A\u653F\u6CBB\u5BB6\",\r\
+      \n  \"unitPx\": 3,\r\n  \"comment_template\": \"{% load extras %} \u7B2C\u4E00\
+      \u4F4D\u306B\u8F1D\u3044\u305F\u306E\u306F{{ items.0.pref }}\u3002{{ items.0.count}}\u4EBA\
+      \u3067\u3057\u305F\u3002{{ items.0.sample }}\u3055\u3093\u306F{{ items.0.pref\
+      \ }}\u51FA\u8EAB\u3067\u3059\u3002\u7B2C\u4E8C\u4F4D\u306F{{ items.1.pref }}\u3002\
+      {{ items.1.count}}\u4EBA\u3067\u3057\u305F\u3002{{ items.1.sample }}\u3055\u3093\
+      \u306F{{ items.1.pref }}\u51FA\u8EAB\u3067\u3059\u3002{% with items|last as\
+      \ last %}\u6700\u4E0B\u4F4D\u306F{{ last.pref }}\u3067{{last.count}}\u4EBA\u3002\
+      {{ last.sample }}\u3055\u3093\u306F{{ last.pref }}\u51FA\u8EAB\u3067\u3059\u3002\
+      {% endwith %}\"\r\n}"}

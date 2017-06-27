@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}WikiPedia 見える化プロジェクト{% endblock title %}
+
+{% block extrahead %}
+  <style type="text/css">
+  <!-- body {
+      padding-top: 70px;
+  }
+
+  .jumbotron {
+      text-align: center;
+  }
+
+  .bar {
+      fill: steelblue;
+  }
+
+  .bar:hover {
+      fill: brown;
+  }
+
+  .barNum {
+    font-size: 9pt;
+    fill: #ffffff;
+  }
+
+  .barYaxis {
+    font-size: 9pt;
+    fill: #000000;
+  }
+
+  -->
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+      <h1>{{ material.title }}</h1>
+      <p>WikiPedia 見える化プロジェクト</p>
+  </div>
+
+  <p id="comment"></p>
+
+  <svg id="myGraph" width="1000px"></svg>
+
+  <table id="list" class="table table-hover">
+    <thead>
+      <tr>
+        <th>順位</th>
+        <th id="head_unit1"></th>
+        <th id="head_unit2"></th>
+        <th id="head_sample"></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="{% static 'js/bar_chart_horizontal.js' %}"></script>
+{% endblock content %}

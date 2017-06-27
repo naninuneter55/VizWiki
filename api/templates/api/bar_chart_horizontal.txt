@@ -1,0 +1,1 @@
+第一位に輝いたのは{{ items.0.pref }}で{{ items.0.count}}{{ meta.unit2 }}でした。{{ items.0.sample }}はそのうちの1{{ meta.unit2 }}です。
